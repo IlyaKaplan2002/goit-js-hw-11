@@ -14,6 +14,7 @@ export const onSubmit = e => {
 
   if (!query) {
     Notify.failure('Empty query!');
+    refs.gallery.innerHTML = '';
     return;
   }
 
@@ -44,17 +45,21 @@ export const onLoadMore = () => {
   getPhotos(query, store.page)
     .then(res => res.data)
     .then(data => {
-      makeCardsMarkup(data.hits, false);
-      refs.loadMoreBtn.classList.remove('visually-hidden');
+      if (data.hits.length) {
+        makeCardsMarkup(data.hits, false);
+        refs.loadMoreBtn.classList.remove('visually-hidden');
 
-      const { height: cardHeight } = document
-        .querySelector('.gallery')
-        .firstElementChild.getBoundingClientRect();
+        const { height: cardHeight } = document
+          .querySelector('.gallery')
+          .firstElementChild.getBoundingClientRect();
 
-      window.scrollBy({
-        top: cardHeight * 2,
-        behavior: 'smooth',
-      });
+        window.scrollBy({
+          top: cardHeight * 2,
+          behavior: 'smooth',
+        });
+      } else {
+        Notify.failure("We're sorry, but you've reached the end of search results.");
+      }
     })
     .catch(() => Notify.failure("We're sorry, but you've reached the end of search results."));
 };
