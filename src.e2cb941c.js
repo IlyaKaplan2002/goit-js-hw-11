@@ -82,4 +82,4 @@ var t=arguments[3];function e(t){return(e="function"==typeof Symbol&&"symbol"==t
 },{}],"Focm":[function(require,module,exports) {
 "use strict";var e=require("./js/actions"),s=require("./js/refs/refs");require("./sass/main.scss"),require("simplelightbox/dist/simple-lightbox.min.css"),s.refs.searchForm.addEventListener("submit",e.onSubmit),s.refs.loadMoreBtn.addEventListener("click",e.onLoadMore);
 },{"./js/actions":"fqCT","./js/refs/refs":"fi17","./sass/main.scss":"clu1","simplelightbox/dist/simple-lightbox.min.css":"clu1"}]},{},["Focm"], null)
-//# sourceMappingURL=/parcel-project-template/src.e2cb941c.js.map
+//# sourceMappingURL=/goit-js-hw-11/src.e2cb941c.js.map
